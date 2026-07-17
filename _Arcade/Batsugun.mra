@@ -1,0 +1,47 @@
+<misterromdescription>
+    <name>Batsugun</name>
+    <setname>batsugun</setname>
+    <rbf>Batsugun</rbf>
+    <mameversion>0281</mameversion>
+    <year>1993</year>
+    <manufacturer>Toaplan</manufacturer>
+    <players>2</players>
+    <joystick>8-way</joystick>
+    <rotation>Vertical (CCW)</rotation>
+    <platform>Toaplan TP-030</platform>
+    <category>Shoot'em up</category>
+
+    <buttons names="Shot,Bomb,Auto,Start,Coin,Pause" default="A,B,X,Start,Select,L" count="3"/>
+
+    <switches default="00,00,90">
+        <dip name="Continue Price" bits="0" ids="Normal,Discount"/>
+        <dip name="Bonus Life" bits="10,11" ids="1000k only,500k and every 600k,1500k only,None"/>
+        <dip name="Lives" bits="12,13" ids="3,5,2,1"/>
+        <dip name="Invulnerability" bits="14" ids="Off,On"/>
+        <dip name="Allow Continue" bits="15" ids="Yes,No"/>
+        <dip name="Region" bits="16,17,18,19" ids="Korea (Unite Trading),Korea,Hong Kong,Hong Kong (Taito Corp.),Taiwan,Taiwan (Taito Corp.),Southeast Asia,Southeast Asia (Taito Corp.),Europe (Taito Corp.),Europe,USA (Taito Corp.),USA,Japan (Taito Corp.),Japan,Japan,Japan"/>
+    </switches>
+
+    <rom index="0" zip="batsugun.zip" md5="None" address="0x30000000">
+        <!-- maincpu - 0x000000 -->
+        <part name="tp030_1a.bin" crc="cb1d4554"/>
+
+        <!-- gp9001_0 - 0x080000 -->
+        <part name="tp030_3l.bin" crc="3024b793"/>
+        <part name="tp030_3h.bin" crc="ed75730b"/>
+        <part name="tp030_4l.bin" crc="fedb9861"/>
+        <part name="tp030_4h.bin" crc="d482948b"/>
+
+        <!-- gp9001_1 - 0x480000 -->
+        <part name="tp030_5.bin" crc="bcf5ba05"/>
+        <part name="tp030_6.bin" crc="0666fecd"/>
+
+        <!-- oki - 0x680000 -->
+        <part name="tp030_2.bin" crc="276146f5"/>
+    </rom>
+
+    <!-- Vertical game, CCW raster polarity, normal JTFrame volume -->
+    <rom index="1">
+        <part>05 80</part>
+    </rom>
+</misterromdescription>
