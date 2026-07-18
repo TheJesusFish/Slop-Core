@@ -1,0 +1,64 @@
+<misterromdescription>
+    <name>Batsugun (Korean PCB)</name>
+    <setname>batsugunb</setname>
+    <rbf>Arcade-Batsugun</rbf>
+    <mameversion>0288</mameversion>
+    <year>1993</year>
+    <manufacturer>Toaplan</manufacturer>
+    <players>2</players>
+    <joystick>8-way</joystick>
+    <rotation>Vertical (CCW)</rotation>
+    <platform>Toaplan TP-030</platform>
+    <category>Shoot'em up</category>
+
+    <buttons names="Shot,Bomb,Auto,Start,Coin,Pause" default="A,B,X,Start,Select,L" count="3"/>
+
+    <switches default="00,00,90">
+        <dip name="Continue Price" bits="0" ids="Normal,Discount"/>
+        <dip name="Bonus Life" bits="10,11" ids="1000k only,500k and every 600k,1500k only,None"/>
+        <dip name="Lives" bits="12,13" ids="3,5,2,1"/>
+        <dip name="Invulnerability" bits="14" ids="Off,On"/>
+        <dip name="Allow Continue" bits="15" ids="Yes,No"/>
+        <dip name="Region" bits="16,17,18,19" ids="Korea (Unite Trading),Korea,Hong Kong,Hong Kong (Taito Corp.),Taiwan,Taiwan (Taito Corp.),Southeast Asia,Southeast Asia (Taito Corp.),Europe (Taito Corp.),Europe,USA (Taito Corp.),USA,Japan (Taito Corp.),Japan,Japan,Japan"/>
+    </switches>
+
+    <rom index="0" zip="batsugunb.zip|batsugun.zip" md5="None" address="0x30000000">
+        <!-- maincpu - 0x000000 -->
+        <part name="large_rom1.bin" crc="c9de8ed8"/>
+
+        <!-- gp9001_0 - 0x080000; four 16-bit byte-lane ROM pairs -->
+        <interleave output="16">
+            <part name="rom12.bin" crc="d25affc6" map="01"/>
+            <part name="rom6.bin" crc="ddd6df60" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="rom11.bin" crc="ed72fe3e" map="01"/>
+            <part name="rom5.bin" crc="fd44b33b" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="rom10.bin" crc="86b2c6a9" map="01"/>
+            <part name="rom4.bin" crc="e7c1c623" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="rom9.bin" crc="fda8ee00" map="01"/>
+            <part name="rom3.bin" crc="a7c4dee8" map="10"/>
+        </interleave>
+
+        <!-- gp9001_1 - 0x480000 -->
+        <interleave output="16">
+            <part name="rom8.bin" crc="a2c6a170" map="01"/>
+            <part name="rom2.bin" crc="a457e202" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="rom7.bin" crc="8644518f" map="01"/>
+            <part name="rom1.bin" crc="8e339897" map="10"/>
+        </interleave>
+
+        <!-- oki - 0x680000 -->
+        <part name="rom13.bin" crc="276146f5"/>
+    </rom>
+
+    <rom index="1">
+        <part>05 80</part>
+    </rom>
+</misterromdescription>
