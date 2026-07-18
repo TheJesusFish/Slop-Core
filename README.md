@@ -7,7 +7,7 @@ This is a repo of vibe coded, MAME-based MiSTer FPGA cores. If you take some sor
 
 ### Installation
 You can either:
-- Download the `downloader_slop_core.ini` file and place it in your MiSTer's /media/fat directory. Update and Update_All will grab the cores the next time you run them.
+- [Download the `downloader_slop_core.ini` file](https://github.com/TheJesusFish/Slop-Core/releases/tag/202607) and place it in your MiSTer's /media/fat directory. Update and Update_All will grab the cores the next time you run them.
 - Add the below line to your `downloader.ini`. After doing that, Update and Update_All will grab the cores the next time you run them.
 ```ini
 [TheJesusFish/Slop-Core]
