@@ -1,6 +1,6 @@
 # COME GET YOUR SLOP
 
-This is a repo of vibe coded, MAME-based MiSTer FPGA cores. If you take some sort of issue with that, it's kind of weird you're here, no? The internet is unending, no reason to stop here.
+This is a repo of vibe coded, MAME-based MiSTer FPGA cores. If you take some sort of issue with that, it's kind of weird you're here, no? The internet is unending, go play Wordle or whatever.
 
 ### Cores in this Repo
 - [Batsugun](https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer)
