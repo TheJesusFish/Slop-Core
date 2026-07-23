@@ -11,7 +11,7 @@
     <platform>Toaplan TP-030</platform>
     <category>Shoot'em up</category>
 
-    <buttons names="Shot,Bomb,Start,Coin,Pause" default="A,B,Start,Select,L" count="2"/>
+    <buttons names="Shot,Bomb,-,Start,Coin,Pause" default="A,B,-,Start,Select,L" count="3"/>
 
     <switches default="00,00,90">
         <!-- DSW A -->
