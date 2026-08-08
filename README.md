@@ -4,7 +4,6 @@ This is a repo of vibe coded, MAME-based MiSTer FPGA cores. If you take some sor
 
 ### Cores in this Repo
 - [Batsugun](https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer)
-- [Dogyuun](https://github.com/TheJesusFish/Arcade-Dogyuun_MiSTer)
 
 ### Installation
 You can either:
