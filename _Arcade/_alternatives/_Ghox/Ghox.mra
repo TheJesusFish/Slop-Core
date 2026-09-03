@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<misterromdescription>
+    <name>Ghox (spinner)</name>
+    <mameversion>0288</mameversion>
+    <setname>ghox</setname>
+    <year>1991</year>
+    <manufacturer>Toaplan</manufacturer>
+    <category>Breakout</category>
+    <rotation>vertical (ccw)</rotation>
+    <players>2</players>
+    <joystick>dial</joystick>
+    <num_buttons>2</num_buttons>
+    <rbf>Ghox</rbf>
+    <buttons names="Button 1,Button 2,Start,Coin,Pause" default="A,B,Start,Select,L" count="2" />
+    <switches default="00,00,20">
+        <dip name="Unused" bits="0" ids="Off,On" />
+        <dip name="Flip Screen" bits="1" ids="Off,On" />
+        <dip name="Service Mode" bits="2" ids="Off,On" />
+        <dip name="Demo Sounds" bits="3" ids="On,Off" />
+        <dip name="Coin A" bits="4,5" ids="1/1,2/1,3/1,4/1" />
+        <dip name="Coin B" bits="6,7" ids="1/2,1/3,1/4,1/6" />
+        <dip name="Difficulty" bits="8,9" ids="Normal,Easy,Hard,Very Hard" />
+        <dip name="Bonus Life" bits="10,11" ids="100k and every 200k,100k and 300k,100k only,None" />
+        <dip name="Lives" bits="12,13" ids="3,5,2,1" />
+        <dip name="Debug Mode (Cheat)" bits="14" ids="Off,On" />
+        <dip name="Unused" bits="15" ids="Off,On" />
+        <dip name="Region" bits="20,23" ids="Japan,USA,Europe,Hong Kong (Honest Trading Co.),Korea,Taiwan,Spain &amp; Portugal (APM Electronics S.A.),Italy (Star Electronica SRL),UK (JP Leisure Limited),USA (Romstar Inc.),Europe (Nova Apparate GMBH &amp; Co.),USA (Taito America Corporation),USA (Taito Corporation Japan),Europe (Taito Corporation Japan),Japan (Licensed to blank),Japan (Taito Corporation)" values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15" />
+    </switches>
+    <rom index="0" zip="ghox.zip" md5="5d620b9b5cfc6d24f20892539bccca59">
+        <interleave output="16">
+            <part name="tp021-01.u10" crc="9e56ac67" map="01" />
+            <part name="tp021-02.u11" crc="15cac60f" map="10" />
+        </interleave>
+        <part name="hd647180.021" crc="6ab59e5b" />
+        <interleave output="32">
+            <part name="tp021-03.u36" crc="a15d8e9d" map="0021" />
+            <part name="tp021-04.u37" crc="26ed1c9a" map="2100" />
+        </interleave>
+    </rom>
+    <rom index="1">
+        <part>4748584D01000100008014007C1337780C665F7C2378784E6EB7DEAE075CBA8267C50D78ED9A0899419A595AEAAD946200000000000000000000000000000000</part>
+    </rom>
+    <rom index="4">
+        <part>000805A20064008E0008000600040000</part>
+    </rom>
+    <nvram index="2" size="264" />
+</misterromdescription>
