@@ -4,6 +4,12 @@ This is a repo of vibe coded, MAME-based MiSTer FPGA cores. If you take some sor
 
 ### Cores in this Repo
 - [Batsugun](https://github.com/TheJesusFish/Arcade-Batsugun_MiSTer)
+- [Dogyuun](https://github.com/TheJesusFish/Arcade-Dogyuun_MiSTer)
+- [FixEight](https://github.com/TheJesusFish/Arcade-FixEight_MiSTer)
+- [Ghox](https://github.com/TheJesusFish/Arcade-Ghox_MiSTer)
+- [Grind Stormer](https://github.com/TheJesusFish/Arcade-GrindStormer_MiSTer)
+- [ITech32](https://github.com/TheJesusFish/Arcade-ITech32_MiSTer) | (BloodStorm - Street Fighter the Movie - Time Killers)
+- [Knuckle Bash](https://github.com/TheJesusFish/Arcade-KnuckleBash_MiSTer)
 
 ### Installation
 You can either:
