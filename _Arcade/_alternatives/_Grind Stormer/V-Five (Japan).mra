@@ -38,7 +38,7 @@
         <dip name="Unknown" bits="23" ids="Off,On"/>
     </switches>
 
-    <rom index="0" zip="grindstm.zip" md5="None"
+    <rom index="0" zip="grindstm.zip|vfive.zip" md5="None"
          address="0x30000000">
         <part name="tp027_01.bin" crc="731d50f4"/>
         <part name="tp027_02.bin" crc="877b45e8"/>
