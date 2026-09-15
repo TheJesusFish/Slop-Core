@@ -10,7 +10,7 @@
     <rotation>Horizontal</rotation>
     <platform>Toaplan TP-023</platform>
     <category>Beat 'em up</category>
-    <buttons names="Button 1,Button 2,Button 3,Start,Coin,Pause" default="A,B,X,Start,Select,L" count="3" />
+    <buttons names="Attack,Jump,-,Start,Coin,Pause,-,-,-,Save States" default="A,B,Start,Select,R,L" count="2" />
     <switches default="00,00,20">
         <dip name="Continue Price" bits="0" ids="Normal,Discount" />
         <dip name="Flip Screen" bits="1" ids="Off,On" />

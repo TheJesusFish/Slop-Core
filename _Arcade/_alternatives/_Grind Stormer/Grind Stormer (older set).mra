@@ -11,8 +11,8 @@
     <platform>Toaplan TP-027</platform>
     <category>Shoot'em up</category>
 
-    <buttons names="Shot,Bomb,Start,Coin,Pause"
-             default="A,B,Start,Select,L" count="2"/>
+    <buttons names="Shot,Bomb,-,Start,Coin,Pause,-,-,-,Savestates"
+             default="A,B,Start,Select,R,L" count="3"/>
 
     <switches default="00,00,90">
         <!-- DSW A -->
@@ -36,7 +36,7 @@
              ids="Korea (Unite Trading),Korea,Hong Kong (Charterfield),Hong Kong,Unused,Taiwan,Southeast Asia (Charterfield),Southeast Asia,Unused,Europe,USA (Atari Games Corp.),USA,Korea; different?,Unused,Unused,Unused"/>
     </switches>
 
-    <rom index="0" zip="grindstm.zip|grindstma.zip" md5="None"
+    <rom index="0" zip="grindstm.zip" md5="None"
          address="0x30000000">
         <part name="tp027-01.rom" crc="8d8c0392"/>
         <part name="tp027_02.bin" crc="877b45e8"/>

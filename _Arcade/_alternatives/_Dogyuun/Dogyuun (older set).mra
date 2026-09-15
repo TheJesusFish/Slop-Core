@@ -11,7 +11,7 @@
     <platform>Toaplan TP-022</platform>
     <category>Shoot'em up</category>
 
-    <buttons names="Shot,Bomb or Speed,Merge or Detach,Start,Coin,Pause" default="A,B,X,Start,Select,L" count="3"/>
+    <buttons names="Shot,Bomb or Speed,Merge or Detach,Start,Coin,Pause,-,-,-,Savestates" default="A,B,X,Start,Select,R,L" count="3"/>
 
     <switches default="00,00,30">
         <dip name="Free Play" bits="0" ids="Off,On"/>

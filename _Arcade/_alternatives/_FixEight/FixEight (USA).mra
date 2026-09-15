@@ -11,7 +11,7 @@
     <platform>Toaplan TP-026</platform>
     <category>Run and gun</category>
 
-    <buttons names="Button 1,Button 2,-,Start,Coin,Pause" default="A,B,-,Start,Select,L" count="3"/>
+    <buttons names="Shot,Bomb,-,Start,Coin,Pause,-,-,-,Savestates" default="A,B,Start,Select,R,L" count="3"/>
 
     <!-- Official TP-026 settings live in the 93C46; there are no DIPs. -->
     <rom index="0" zip="fixeightu.zip|fixeight.zip" md5="77fc003ebf0c88024987b28527fa4139" address="0x30000000">

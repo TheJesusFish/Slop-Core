@@ -12,8 +12,8 @@
     <platform>Toaplan TP-027</platform>
     <category>Shoot'em up</category>
 
-    <buttons names="Shot,Bomb,Start,Coin,Pause"
-             default="A,B,Start,Select,L" count="2"/>
+    <buttons names="Shot,Bomb,-,Start,Coin,Pause,-,-,-,Savestates"
+             default="A,B,Start,Select,R,L" count="3"/>
 
     <switches default="00,00,00">
         <!-- DSW A -->
@@ -38,7 +38,7 @@
         <dip name="Unknown" bits="23" ids="Off,On"/>
     </switches>
 
-    <rom index="0" zip="grindstm.zip|vfive.zip" md5="None"
+    <rom index="0" zip="grindstm.zip" md5="None"
          address="0x30000000">
         <part name="tp027_01.bin" crc="731d50f4"/>
         <part name="tp027_02.bin" crc="877b45e8"/>
