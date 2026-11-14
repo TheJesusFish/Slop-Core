@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Pairs (V1.2)</name>
+    <setname>pairs</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1994</year>
+    <manufacturer>Strata / Incredible Technologies</manufacturer>
+    <players>2</players>
+    <joystick>8-way</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 16-bit</platform>
+    <category>Puzzle</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Flip Screen" bits="1" ids="Off,On" />
+        <dip name="Modesty" bits="2" ids="Off,On" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--Manual: one Select button (JAMMA button 1) turns a card over; keep '-' at B2..B6 so Start/Coin stay joystick bits10/11.-->
+    <buttons names="Select,-,-,-,-,-,Start,Coin" default="A,Start,Select" count="1" />
+    <!--Board selector 04 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>04</part>
+    </rom>
+    <!-- 64 KiB battery-backed work RAM at CPU 0x000000-0x00ffff. -->
+    <nvram index="2" size="65536" />
+    <rom index="0" zip="pairs.zip" address="0x30000000" md5="59fb3161b0528949f173b9d2df34dd67">
+        <!-- 0x0000000: 68000 program, 256 KiB of the 512 KiB region. -->
+        <interleave output="16">
+            <part name="pair0_u83_x_v1.2.u83" crc="a9c761d8" map="01" />
+            <part name="pair1_u88_x_v1.2.u88" crc="5141eb86" map="10" />
+        </interleave>
+        <part repeat="0x40000">00</part>
+        <part repeat="0x380000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="pairsnd_u17_v1.u17" crc="7a514cfd" offset="0x18000" length="0x8000" />
+        <part name="pairsnd_u17_v1.u17" crc="7a514cfd" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x880000 MAME region. -->
+        <interleave output="32">
+            <part name="pairx_grom0_v1.grom0" crc="baf1c2dd" map="0001" />
+            <part name="pairx_grom5_v1.grom5" crc="30e993f3" map="0010" />
+            <part name="pairx_grom10_v1.grom10" crc="3f52f50d" map="0100" />
+            <part name="pairx_grom15_v1.grom15" crc="fd38aa36" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="pairx_grom1_v1.grom1" crc="b0bd7008" map="0001" />
+            <part name="pairx_grom6_v1.grom6" crc="f7b20a47" map="0010" />
+            <part name="pairx_grom11_v1.grom11" crc="1e5f2523" map="0100" />
+            <part name="pairx_grom16_v1.grom16" crc="b2975259" map="1000" />
+        </interleave>
+        <part repeat="0x1e00000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="ensoniq.2m" crc="9fdc4825" map="01" />
+            <part map="10" repeat="0x200000">00</part>
+        </interleave>
+        <!-- 0x2a00000: ES5506 bank 2 (ensoniq.2), slot B. -->
+        <interleave output="16">
+            <part name="srom0.bin" crc="19a857f9" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x300000">00</part>
+    </rom>
+</misterromdescription>

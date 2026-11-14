@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Power Up Baseball (prototype)</name>
+    <setname>pubball</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1996</year>
+    <manufacturer>Midway / Incredible Technologies</manufacturer>
+    <players>2</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 32-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Flip Screen" bits="1" ids="Off,On" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--MAME: B1 First Base, B2 Second Base, B3 Third Base, B4 Home, B5 Power Up. The mouse, left stick, d-pad or arrow keys move trackball 1; player 2 uses the second controller's stick or d-pad, or R/F/D/G.-->
+    <buttons names="First Base,Second Base,Third Base,Home,Power Up,-,Start,Coin" default="A,B,X,Y,R,Start,Select" count="5" />
+    <!--Board selector 10 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>10</part>
+    </rom>
+    <!-- 128 KiB battery-backed NVRAM at CPU 0x600000-0x61ffff. -->
+    <nvram index="2" size="131072" />
+    <rom index="0" zip="pubball.zip" address="0x30000000" md5="469af21ca1932a34e2d560faa47a2848">
+        <!-- 0x0000000: 68EC020 program, 0x96a44 bytes of the 4 MiB region (MAME fills 0xff). -->
+        <interleave output="32">
+            <part name="bb0.bin" crc="f9350590" map="0001" />
+            <part name="bb1.bin" crc="5711f503" map="0010" />
+            <part name="bb2.bin" crc="3e202dc6" map="0100" />
+            <part name="bb3.bin" crc="e6d1ba8d" map="1000" />
+        </interleave>
+        <part repeat="0x3695bc">ff</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="bball.bim" crc="915a9116" offset="0x18000" length="0x8000" />
+        <part name="bball.bim" crc="915a9116" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0xe00000 MAME region. -->
+        <interleave output="32">
+            <part name="grom00_0.bin" crc="46822b0f" map="0001" />
+            <part name="grom00_1.bin" crc="c11236ce" map="0010" />
+            <part name="grom00_2.bin" crc="e6be30f3" map="0100" />
+            <part name="grom00_3.bin" crc="e0d454fb" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="grom01_0.bin" crc="115a66f2" map="0001" />
+            <part name="grom01_1.bin" crc="1dfc8dbd" map="0010" />
+            <part name="grom01_2.bin" crc="23386483" map="0100" />
+            <part name="grom01_3.bin" crc="ac0123ce" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="grom02_0.bin" crc="06cd3cca" map="0001" />
+            <part name="grom02_1.bin" crc="3df38e91" map="0010" />
+            <part name="grom02_2.bin" crc="7c47dde9" map="0100" />
+            <part name="grom02_3.bin" crc="e6eb01bf" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="grom3_0.bin" crc="376beb10" map="0001" />
+            <part name="grom3_1.bin" crc="3b3cb8ba" map="0010" />
+            <part name="grom3_2.bin" crc="3bdfac73" map="0100" />
+            <part name="grom3_3.bin" crc="1de04025" map="1000" />
+        </interleave>
+        <part repeat="0x1300000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. The sample ROMs are odd sizes; each fills the even bytes from its MAME offset. -->
+        <interleave output="16">
+            <part name="bbsrom0.bin" crc="2a69f77e" map="01" />
+            <part map="10" repeat="0xf8b8e">00</part>
+        </interleave>
+        <part repeat="0xe8e4">00</part>
+        <interleave output="16">
+            <part name="bbsrom1.bin" crc="4af8c871" map="01" />
+            <part map="10" repeat="0xfe442">00</part>
+        </interleave>
+        <part repeat="0x377c">00</part>
+        <!-- 0x2a00000: ES5506 bank 1 (ensoniq.1), slot B. -->
+        <interleave output="16">
+            <part name="bbsrom2.bin" crc="e4f9ad52" map="01" />
+            <part map="10" repeat="0xfe62d">00</part>
+        </interleave>
+        <part repeat="0x33a6">00</part>
+        <interleave output="16">
+            <part name="bbsrom3.bin" crc="b37e2906" map="01" />
+            <part map="10" repeat="0xf90b3">00</part>
+        </interleave>
+        <part repeat="0xde9a">00</part>
+    </rom>
+</misterromdescription>

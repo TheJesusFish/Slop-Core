@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Golden Tee Diamond Edition Tournament (v3.05T ELC)</name>
+    <setname>gtdiamond</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1998</year>
+    <manufacturer>Incredible Technologies</manufacturer>
+    <players>4</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 32-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--MAME: B1 Face Left, B2 Face Right; player 1's B3/B4 are the cabinet's Volume Up/Down. The mouse, left stick or d-pad moves trackball 1; with Two Trackballs set, player 2 uses the second controller's stick or d-pad.-->
+    <buttons names="Face Left,Face Right,Volume Up,Volume Down,-,-,Start,Coin" default="A,B,X,Y,Start,Select" count="4" />
+    <!--Board selector 11 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>11</part>
+    </rom>
+    <!-- 128 KiB battery-backed NVRAM at CPU 0x600000-0x61ffff, then the 2 KiB M48T02 timekeeper at 0x681000-0x6817ff. -->
+    <nvram index="2" size="133120" />
+    <rom index="0" zip="gtdiamond.zip|gt98.zip" address="0x30000000" md5="4ce4854829cdef81a640f953045228b0">
+        <!-- 0x0000000: 68EC020 program, 4 MiB. -->
+        <interleave output="32">
+            <part name="gt98_golf_elc_prom0_v3.05tl.prom0" crc="b6b0e3b8" map="0001" />
+            <part name="gt98_golf_elc_prom1_v3.05tl.prom1" crc="ba15f3a3" map="0010" />
+            <part name="gt98_golf_elc_prom2_v3.05tl.prom2" crc="015e1c94" map="0100" />
+            <part name="gt98_golf_elc_prom3_v3.05tl.prom3" crc="d990528b" map="1000" />
+        </interleave>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="gt98nr_u88_v1.0.u88" crc="2cee9e98" offset="0x18000" length="0x8000" />
+        <part name="gt98nr_u88_v1.0.u88" crc="2cee9e98" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x600000 MAME region. -->
+        <interleave output="32">
+            <part name="gt98_grom0_0.grm0_0" crc="2d79492b" map="0001" />
+            <part name="gt98_grom0_1.grm0_1" crc="79afda1a" map="0010" />
+            <part name="gt98_grom0_2.grm0_2" crc="8c381f56" map="0100" />
+            <part name="gt98_grom0_3.grm0_3" crc="46c35ba6" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="gt98_grom1_0.grm1_0" crc="b07bc634" map="0001" />
+            <part name="gt98_grom1_1.grm1_1" crc="b23d59a7" map="0010" />
+            <part name="gt98_grom1_2.grm1_2" crc="9c113abc" map="0100" />
+            <part name="gt98_grom1_3.grm1_3" crc="231bbe58" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="gt98_grome2_0.grm2_0" crc="0c898920" map="0001" />
+            <part name="gt98_grome2_1.grm2_1" crc="cbe5b2b2" map="0010" />
+            <part name="gt98_grome2_2.grm2_2" crc="71bd4441" map="0100" />
+            <part name="gt98_grome2_3.grm2_3" crc="86149804" map="1000" />
+        </interleave>
+        <part repeat="0x1b00000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="gt98_srom0_nr.srom0" crc="44983bd7" map="01" />
+            <part map="10" repeat="0x100000">00</part>
+        </interleave>
+        <interleave output="16">
+            <part name="gt98_srom1_nr.srom1" crc="1b3f18b6" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <!-- 0x2a00000: slot B, unused. -->
+        <part repeat="0x400000">00</part>
+    </rom>
+</misterromdescription>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Hot Memory (V1.1, Germany)</name>
+    <setname>hotmemry11</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1994</year>
+    <manufacturer>Incredible Technologies (Tuning license)</manufacturer>
+    <players>2</players>
+    <joystick>8-way</joystick>
+    <rotation>Horizontal</rotation>
+    <region>Germany</region>
+    <platform>Incredible Technologies 16-bit</platform>
+    <category>Puzzle</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Flip Screen" bits="1" ids="Off,On" />
+        <dip name="Modesty" bits="2" ids="Off,On" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--Manual: one Select button (JAMMA button 1) turns a card over; keep '-' at B2..B6 so Start/Coin stay joystick bits10/11.-->
+    <buttons names="Select,-,-,-,-,-,Start,Coin" default="A,Start,Select" count="1" />
+    <!--Board selector 04 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>04</part>
+    </rom>
+    <!-- 64 KiB battery-backed work RAM at CPU 0x000000-0x00ffff. -->
+    <nvram index="2" size="65536" />
+    <rom index="0" zip="hotmemry11.zip|pairs.zip" address="0x30000000" md5="6629b7da49ad8caf60cd6b7aa49c76ba">
+        <!-- 0x0000000: 68000 program, 256 KiB; MAME erases the rest to 0xff. -->
+        <interleave output="16">
+            <part name="hotmem0_u83_v1.1.u83" crc="8d614b1b" map="01" />
+            <part name="hotmem1_u88_v1.1.u88" crc="009639fb" map="10" />
+        </interleave>
+        <part repeat="0x40000">FF</part>
+        <part repeat="0x380000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="hotmemsnd_u17_v1.u17" crc="805941c7" offset="0x18000" length="0x8000" />
+        <part name="hotmemsnd_u17_v1.u17" crc="805941c7" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x880000 MAME region. -->
+        <interleave output="32">
+            <part name="hotmem_grom0_v1.grom0" crc="68f279ef" map="0001" />
+            <part name="hotmem_grom5_v1.grom5" crc="295bb43d" map="0010" />
+            <part name="hotmem_grom10_v1.grom10" crc="f8cc939b" map="0100" />
+            <part name="hotmem_grom15_v1.grom15" crc="a03d9bcd" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="hotmem_grom1_v1.grom1" crc="b446105e" map="0001" />
+            <part name="hotmem_grom6_v1.grom6" crc="3a7ba9eb" map="0010" />
+            <part name="hotmem_grom11_v1.grom11" crc="9ec4ea41" map="0100" />
+            <part name="hotmem_grom16_v1.grom16" crc="4507a895" map="1000" />
+        </interleave>
+        <part repeat="0x1e00000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="ensoniq.2m" crc="9fdc4825" map="01" />
+            <part map="10" repeat="0x200000">00</part>
+        </interleave>
+        <!-- 0x2a00000: ES5506 bank 2 (ensoniq.2), slot B. -->
+        <interleave output="16">
+            <part name="srom0_hotmem_v1.srom0" crc="c1103224" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x300000">00</part>
+    </rom>
+</misterromdescription>

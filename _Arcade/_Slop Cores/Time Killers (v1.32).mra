@@ -26,7 +26,7 @@
         CONF_STR J positions (joystick bits 10/11); Main_MiSTer skips a "-"
         name without consuming an entry from the seven-item default list.
     -->
-    <buttons names="Button 1,Button 2,Button 3,Button 4,Button 5,-,Start,Coin" default="Y,X,L,B,A,Start,Select" count="5"/>
+    <buttons names="Back Arm,Weapon Arm,Back Leg,Weapon Leg,Head,-,Start,Coin" default="Y,X,L,B,A,Start,Select" count="5"/>
 
     <!-- Board selector must precede the bulk DDR stream. -->
     <rom index="1">

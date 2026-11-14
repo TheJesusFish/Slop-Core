@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>World Class Bowling (v1.5)</name>
+    <setname>wcbowl15</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1995</year>
+    <manufacturer>Incredible Technologies</manufacturer>
+    <players>4</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 16-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Flip Screen" bits="1" ids="Off,On" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--Manual: JAMMA button 1 Hook Left, button 2 Hook Right (add spin); roll the trackball forward to bowl. The mouse, left stick or d-pad moves the ball; players take turns on one trackball.-->
+    <buttons names="Hook Left,Hook Right,-,-,-,-,Start,Coin" default="A,B,Start,Select" count="2" />
+    <!--Board selector 05 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>05</part>
+    </rom>
+    <!-- 64 KiB battery-backed work RAM at CPU 0x000000-0x00ffff. -->
+    <nvram index="2" size="65536" />
+    <rom index="0" zip="wcbowl15.zip|wcbowl.zip" address="0x30000000" md5="acf9c6a80036659f7a426a6cf270054d">
+        <!-- 0x0000000: 68000 program, 256 KiB of the 512 KiB region. -->
+        <interleave output="16">
+            <part name="wcb_v1.5_u83.u83" crc="3ca9ab85" map="01" />
+            <part name="wcb_v1.5_u88.u88" crc="d43e6fad" map="10" />
+        </interleave>
+        <part repeat="0x40000">00</part>
+        <part repeat="0x380000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="wcb_snd_v2.0.u17" crc="c14907ba" offset="0x18000" length="0x8000" />
+        <part name="wcb_snd_v2.0.u17" crc="c14907ba" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; MAME fills 0x400000-0x87ffff with 0xff. -->
+        <interleave output="32">
+            <part name="wcb_grom0_0.grm0_0" crc="5d79aaae" map="0001" />
+            <part name="wcb_grom0_1.grm0_1" crc="e26dcedb" map="0010" />
+            <part name="wcb_grom0_2.grm0_2" crc="32735875" map="0100" />
+            <part name="wcb_grom0_3.grm0_3" crc="019d0ab8" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="wcb_grom1_0.grm1_0" crc="8bd31762" map="0001" />
+            <part name="wcb_grom1_1.grm1_1" crc="b3f761fc" map="0010" />
+            <part name="wcb_grom1_2.grm1_2" crc="c22f44ad" map="0100" />
+            <part name="wcb_grom1_3.grm1_3" crc="036084c4" map="1000" />
+        </interleave>
+        <part repeat="0x480000">FF</part>
+        <part repeat="0x1880000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="ensoniq_2mx16u.rom0" crc="0814ab80" map="01" />
+            <part map="10" repeat="0x200000">00</part>
+        </interleave>
+        <!-- 0x2a00000: ES5506 bank 2 (ensoniq.2), slot B. -->
+        <interleave output="16">
+            <part name="wcb__srom0.srom0" crc="115bcd1f" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <interleave output="16">
+            <part name="wcb__srom1.srom1" crc="87a4a4d8" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x200000">00</part>
+    </rom>
+</misterromdescription>

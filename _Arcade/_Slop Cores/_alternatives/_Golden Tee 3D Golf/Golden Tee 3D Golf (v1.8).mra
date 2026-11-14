@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Golden Tee 3D Golf (v1.8)</name>
+    <setname>gt3dv18</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1995</year>
+    <manufacturer>Incredible Technologies</manufacturer>
+    <players>4</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 32-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Trackball Mount" bits="1" ids="Normal,45 Degrees" />
+        <dip name="Controls" bits="2" ids="One Trackball,Two Trackballs" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--MAME: B1 Face Left, B2 Face Right; player 1's B3/B4 are the cabinet's Volume Up/Down. The mouse, left stick or d-pad moves this board's single trackball.-->
+    <buttons names="Face Left,Face Right,Volume Up,Volume Down,-,-,Start,Coin" default="A,B,X,Y,Start,Select" count="4" />
+    <!--Board selector 0e must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>0e</part>
+    </rom>
+    <!-- 128 KiB battery-backed NVRAM at CPU 0x600000-0x61ffff. -->
+    <nvram index="2" size="131072" />
+    <rom index="0" zip="gt3dv18.zip|gt3d.zip" address="0x30000000" md5="f06f81a2630778ea6f89ca6c84c71a6b">
+        <!-- 0x0000000: 68EC020 program, 2 MiB of the 4 MiB region. -->
+        <interleave output="32">
+            <part name="gtg3_prom0_v1.8.prom0" crc="0fa53c40" map="0001" />
+            <part name="gtg3_prom1_v1.8.prom1" crc="bef2cbe3" map="0010" />
+            <part name="gtg3_prom2_v1.8.prom2" crc="1d5fb128" map="0100" />
+            <part name="gtg3_prom3_v1.8.prom3" crc="5542c335" map="1000" />
+        </interleave>
+        <part repeat="0x200000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="gtg3-snd_u23_v1.1.u23" crc="2f4cde9f" offset="0x18000" length="0x8000" />
+        <part name="gtg3-snd_u23_v1.1.u23" crc="2f4cde9f" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x600000 MAME region. -->
+        <interleave output="32">
+            <part name="gtg3_grom0_0.grm0_0" crc="1b10379d" map="0001" />
+            <part name="gtg3_grom0_1.grm0_1" crc="3b852e1a" map="0010" />
+            <part name="gtg3_grom0_2.grm0_2" crc="d43ffb35" map="0100" />
+            <part name="gtg3_grom0_3.grm0_3" crc="2d24e93e" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="gtg3_grom1_0.grm1_0" crc="4476b239" map="0001" />
+            <part name="gtg3_grom1_1.grm1_1" crc="0aadfad2" map="0010" />
+            <part name="gtg3_grom1_2.grm1_2" crc="27871980" map="0100" />
+            <part name="gtg3_grom1_3.grm1_3" crc="7dbc242b" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="gtg3_grom2_0.grm2_0" crc="15cb22bc" map="0001" />
+            <part name="gtg3_grom2_1.grm2_1" crc="52f3ad44" map="0010" />
+            <part name="gtg3_grom2_2.grm2_2" crc="c7712125" map="0100" />
+            <part name="gtg3_grom2_3.grm2_3" crc="77869bcf" map="1000" />
+        </interleave>
+        <part repeat="0x1700000">00</part>
+        <!-- 0x2200000: ES5506 bank 3 (ensoniq.3), slot C at the top of the GROM window. -->
+        <interleave output="16">
+            <part name="gtg3_srom3.srom3" crc="d2462965" map="01" />
+            <part map="10" repeat="0x20000">00</part>
+        </interleave>
+        <part repeat="0x3c0000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="ensoniq_2m.rom0" crc="9fdc4825" map="01" />
+            <part map="10" repeat="0x200000">00</part>
+        </interleave>
+        <!-- 0x2a00000: ES5506 bank 2 (ensoniq.2), slot B. -->
+        <interleave output="16">
+            <part name="gtg3_srom1.srom1" crc="ac669434" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <interleave output="16">
+            <part name="gtg3_srom2.srom2" crc="6853578e" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+    </rom>
+</misterromdescription>

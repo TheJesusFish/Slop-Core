@@ -19,7 +19,7 @@
         <dip name="Service Mode" bits="3" ids="Off,On" />
     </switches>
     <!--Keep '-' at B6; Start/Coin remain joystick bits10/11. No Pause or save-state binding.-->
-    <buttons names="Button 1,Button 2,Button 3,Button 4,Button 5,-,Start,Coin" default="Y,X,L,B,A,Start,Select" count="5" />
+    <buttons names="Back Arm,Block,Front Arm,Back Leg,Front Leg,-,Start,Coin" default="Y,X,L,B,A,Start,Select" count="5" />
     <!--Game02 must precede the address30000000 bulk stream.-->
     <rom index="1">
         <part>02</part>

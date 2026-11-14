@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Hard Yardage (v1.10)</name>
+    <setname>hardyard11</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1993</year>
+    <manufacturer>Strata / Incredible Technologies</manufacturer>
+    <players>4</players>
+    <joystick>8-way</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 16-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Players" bits="2" ids="4,2" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--Manual: JAMMA button 1 Pass/Jump (throw or hand off; super tackle on defense), button 2 Select (choose play, snap, switch defender). Players 3-4 use MiSTer joysticks 3-4 and have no coin input.-->
+    <buttons names="Pass/Jump,Select,-,-,-,-,Start,Coin" default="A,B,Start,Select" count="2" />
+    <!--Board selector 03 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>03</part>
+    </rom>
+    <!-- 64 KiB battery-backed work RAM at CPU 0x000000-0x00ffff. -->
+    <nvram index="2" size="65536" />
+    <rom index="0" zip="hardyard11.zip|hardyard.zip" address="0x30000000" md5="f035c59257e8eee290cdb0f898d25c7c">
+        <!-- 0x0000000: 68000 program, 512 KiB of the 512 KiB region. -->
+        <interleave output="16">
+            <part name="fb00_v1.10_u83.u83" crc="603f8a03" map="01" />
+            <part name="fb01_v1.10_u88.u88" crc="7b11db88" map="10" />
+        </interleave>
+        <part repeat="0x380000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="fb_snd_v1.1_u17.u17" crc="d221b121" offset="0x18000" length="0x8000" />
+        <part name="fb_snd_v1.1_u17.u17" crc="d221b121" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x880000 MAME region. -->
+        <interleave output="32">
+            <part name="footbal_0.grom0.itfb0" crc="0b7781af" map="0001" />
+            <part name="footbal_1.grom5.itfb1" crc="178d0f9b" map="0010" />
+            <part name="footbal_2.grom10.itfb2" crc="0a17231e" map="0100" />
+            <part name="footbal_3.grom15.itfb3" crc="104456af" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="footbal_4.grom1.itfb4" crc="2cb6f454" map="0001" />
+            <part name="footbal_5.grom6.itfb5" crc="9b19b873" map="0010" />
+            <part name="footbal_6.grom11.itfb6" crc="58694394" map="0100" />
+            <part name="footbal_7.grom16.itfb7" crc="9b7a2d1a" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="itfb-8.grom2.itfb8" crc="a1656bf8" map="0001" />
+            <part name="itfb-9.grom7.itfb9" crc="2afa9e10" map="0010" />
+            <part name="itfb-10.grom12.itfb10" crc="d5d15b38" map="0100" />
+            <part name="itfb-11.grom17.itfb11" crc="cd4f0df0" map="1000" />
+        </interleave>
+        <part repeat="0x1880000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="ensoniq.2m" crc="9fdc4825" map="01" />
+            <part map="10" repeat="0x200000">00</part>
+        </interleave>
+        <!-- 0x2a00000: ES5506 bank 2 (ensoniq.2), slot B. -->
+        <interleave output="16">
+            <part name="fb_srom00.srom0" crc="b0a76ad2" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <interleave output="16">
+            <part name="fb_srom01.srom1" crc="9fbf6a02" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x200000">00</part>
+    </rom>
+</misterromdescription>

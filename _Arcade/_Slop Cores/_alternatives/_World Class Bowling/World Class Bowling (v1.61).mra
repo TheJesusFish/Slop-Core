@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>World Class Bowling (v1.61)</name>
+    <setname>wcbowl161</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1995</year>
+    <manufacturer>Incredible Technologies</manufacturer>
+    <players>4</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 32-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Flip Screen" bits="1" ids="Off,On" />
+        <dip name="Freeze Screen" bits="2" ids="Off,On" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--MAME/manual: B1 Hook Left, B2 Hook Right (add spin); roll the trackball forward to bowl. The mouse, left stick or d-pad moves ball 1; in cocktail mode player 2 uses the second controller's stick or d-pad.-->
+    <buttons names="Hook Left,Hook Right,-,-,-,-,Start,Coin" default="A,B,Start,Select" count="2" />
+    <!--Board selector 07 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>07</part>
+    </rom>
+    <!-- 128 KiB battery-backed NVRAM at CPU 0x600000-0x61ffff. -->
+    <nvram index="2" size="131072" />
+    <rom index="0" zip="wcbowl161.zip|wcbowl.zip" address="0x30000000" md5="0f3c0ca9f5fb557b7893f7fae017232f">
+        <!-- 0x0000000: 68EC020 program, 512 KiB of the 4 MiB region. -->
+        <interleave output="32">
+            <part name="wcb_prom0_v1.61n.prom0" crc="b879d4a7" map="0001" />
+            <part name="wcb_prom1_v1.61n.prom1" crc="49f3ed6a" map="0010" />
+            <part name="wcb_prom2_v1.61n.prom2" crc="47259009" map="0100" />
+            <part name="wcb_prom3_v1.61n.prom3" crc="e5081f85" map="1000" />
+        </interleave>
+        <part repeat="0x380000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="wcbsnd_u88_v4.0.u88" crc="194a51d7" offset="0x18000" length="0x8000" />
+        <part name="wcbsnd_u88_v4.0.u88" crc="194a51d7" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x880000 MAME region. -->
+        <interleave output="32">
+            <part name="wcb_grom0_0_s.grm0_0" crc="6fcb4246" map="0001" />
+            <part name="wcb_grom0_1_s.grm0_1" crc="2ae31f45" map="0010" />
+            <part name="wcb_grom0_2_s.grm0_2" crc="bccc0f35" map="0100" />
+            <part name="wcb_grom0_3_s.grm0_3" crc="ab1da462" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="wcb_grom1_0_s.grm1_0" crc="bdfafd1f" map="0001" />
+            <part name="wcb_grom1_1_s.grm1_1" crc="7d6baa2e" map="0010" />
+            <part name="wcb_grom1_2_s.grm1_2" crc="7513d3de" map="0100" />
+            <part name="wcb_grom1_3_s.grm1_3" crc="e46877e6" map="1000" />
+        </interleave>
+        <part repeat="0x480000">FF</part>
+        <part repeat="0x1880000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="wcb_srom0.srom0" crc="c3821cb5" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <interleave output="16">
+            <part name="wcb_srom1.srom1" crc="37bfa3c7" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <!-- 0x2a00000: ES5506 bank 1 (ensoniq.1), slot B. -->
+        <interleave output="16">
+            <part name="wcb_srom2.srom2" crc="f82c08fd" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <interleave output="16">
+            <part name="wcb_srom3.srom3" crc="1c2efdee" map="01" />
+            <part map="10" repeat="0x20000">00</part>
+        </interleave>
+        <part repeat="0x1c0000">00</part>
+    </rom>
+</misterromdescription>

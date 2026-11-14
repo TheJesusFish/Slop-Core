@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Shuffleshot (v1.40)</name>
+    <setname>shufshot</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>1997</year>
+    <manufacturer>Incredible Technologies</manufacturer>
+    <players>2</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 32-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Cabinet" bits="1" ids="Upright,Cocktail" />
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--MAME: B1 Zoom, B2 Wax. The mouse, left stick or d-pad moves ball 1; in cocktail mode player 2 uses the second controller's stick or d-pad.-->
+    <buttons names="Zoom,Wax,-,-,-,-,Start,Coin" default="A,B,Start,Select" count="2" />
+    <!--Board selector 09 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>09</part>
+    </rom>
+    <!-- 128 KiB battery-backed NVRAM at CPU 0x600000-0x61ffff. -->
+    <nvram index="2" size="131072" />
+    <rom index="0" zip="shufshot.zip" address="0x30000000" md5="7fb2a2cf384027ad4ac11e0f3e8dee92">
+        <!-- 0x0000000: 68EC020 program, 512 KiB of the 4 MiB region. -->
+        <interleave output="32">
+            <part name="shot_prom0_v1.40.prom0" crc="33c0c98b" map="0001" />
+            <part name="shot_prom1_v1.40.prom1" crc="d30a8831" map="0010" />
+            <part name="shot_prom2_v1.40.prom2" crc="ea10ada8" map="0100" />
+            <part name="shot_prom3_v1.40.prom3" crc="4b28f28b" map="1000" />
+        </interleave>
+        <part repeat="0x380000">00</part>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="shotsnd_u88_v1.1.u88" crc="e37d599d" offset="0x18000" length="0x8000" />
+        <part name="shotsnd_u88_v1.1.u88" crc="e37d599d" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x800000 MAME region. -->
+        <interleave output="32">
+            <part name="shf_grom0_0.grm0_0" crc="832a3d6a" map="0001" />
+            <part name="shf_grom0_1.grm0_1" crc="155e48a2" map="0010" />
+            <part name="shf_grom0_2.grm0_2" crc="9f2b470d" map="0100" />
+            <part name="shf_grom0_3.grm0_3" crc="3855a16a" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="shf_grom1_0.grm1_0" crc="ed140389" map="0001" />
+            <part name="shf_grom1_1.grm1_1" crc="bd2ffbca" map="0010" />
+            <part name="shf_grom1_2.grm1_2" crc="c6de4187" map="0100" />
+            <part name="shf_grom1_3.grm1_3" crc="0c707aa2" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="shf_grom2_0.grm2_0" crc="529b4259" map="0001" />
+            <part name="shf_grom2_1.grm2_1" crc="4b52ab1a" map="0010" />
+            <part name="shf_grom2_2.grm2_2" crc="f45fad03" map="0100" />
+            <part name="shf_grom2_3.grm2_3" crc="1bcb26c8" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="shfa_grom3_0.grm3_0" crc="c5afc9d1" map="0001" />
+            <part name="shfa_grom3_1.grm3_1" crc="70dd7b68" map="0010" />
+            <part name="shfa_grom3_2.grm3_2" crc="da56512d" map="0100" />
+            <part name="shfa_grom3_3.grm3_3" crc="21727c50" map="1000" />
+        </interleave>
+        <part repeat="0x1900000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="shf_srom0.srom0" crc="9a3cb6c9" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <interleave output="16">
+            <part name="shf_srom1.srom1" crc="8c89948a" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <!-- 0x2a00000: ES5506 bank 1 (ensoniq.1), slot B. -->
+        <part repeat="0x400000">00</part>
+    </rom>
+</misterromdescription>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+    <name>Golden Tee 2K Tournament (v5.00)</name>
+    <setname>gt2kt500</setname>
+    <rbf>ITech32</rbf>
+    <mameversion>0288</mameversion>
+    <year>2000</year>
+    <manufacturer>Incredible Technologies</manufacturer>
+    <players>4</players>
+    <joystick>Trackball</joystick>
+    <rotation>Horizontal</rotation>
+    <region>World</region>
+    <platform>Incredible Technologies 32-bit</platform>
+    <category>Sports</category>
+    <!--DIP bits0..3 map to native masks10/20/40/80, physical SW1:4/3/2/1.-->
+    <switches default="00">
+        <dip name="Service Mode" bits="3" ids="Off,On" />
+    </switches>
+    <!--MAME: B1 Face Left, B2 Face Right; player 1's B3/B4 are the cabinet's Volume Up/Down. The mouse, left stick or d-pad moves trackball 1; with Two Trackballs set, player 2 uses the second controller's stick or d-pad.-->
+    <buttons names="Face Left,Face Right,Volume Up,Volume Down,-,-,Start,Coin" default="A,B,X,Y,Start,Select" count="4" />
+    <!--Board selector 11 must precede the address30000000 bulk stream.-->
+    <rom index="1">
+        <part>11</part>
+    </rom>
+    <!-- 128 KiB battery-backed NVRAM at CPU 0x600000-0x61ffff, then the 2 KiB M48T02 timekeeper at 0x681000-0x6817ff. -->
+    <nvram index="2" size="133120" />
+    <rom index="0" zip="gt2kt500.zip|gt2k.zip" address="0x30000000" md5="19ea2b2e6a54586c1bb47f178dfb6fc9">
+        <!-- 0x0000000: 68EC020 program, 4 MiB. -->
+        <interleave output="32">
+            <part name="gt2k_prom0_v5.00t.prom0" crc="8f20f9eb" map="0001" />
+            <part name="gt2k_prom1_v5.00t.prom1" crc="bdecc1f5" map="0010" />
+            <part name="gt2k_prom2_v5.00t.prom2" crc="46666c15" map="0100" />
+            <part name="gt2k_prom3_v5.00t.prom3" crc="89544fbc" map="1000" />
+        </interleave>
+        <!-- 0x0400000: 6809 sound region; bank 0 at 0x10000. -->
+        <part repeat="0x8000">00</part>
+        <part name="gt2knr_u88_v1.0.u88" crc="2cee9e98" offset="0x18000" length="0x8000" />
+        <part name="gt2knr_u88_v1.0.u88" crc="2cee9e98" offset="0x0" length="0x18000" />
+        <part repeat="0xd8000">00</part>
+        <!-- 0x0500000: GROM; the blitter wraps at the 0x600000 MAME region. -->
+        <interleave output="32">
+            <part name="gt2k_grom0_0.grm0_0" crc="c22b50f9" map="0001" />
+            <part name="gt2k_grom0_1.grm0_1" crc="d6d6be57" map="0010" />
+            <part name="gt2k_grom0_2.grm0_2" crc="005d4791" map="0100" />
+            <part name="gt2k_grom0_3.grm0_3" crc="0c998eb7" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="gt2k_grom1_0.grm1_0" crc="8b79d6e2" map="0001" />
+            <part name="gt2k_grom1_1.grm1_1" crc="84ef1803" map="0010" />
+            <part name="gt2k_grom1_2.grm1_2" crc="d73d8afc" map="0100" />
+            <part name="gt2k_grom1_3.grm1_3" crc="59f48688" map="1000" />
+        </interleave>
+        <interleave output="32">
+            <part name="gt2k_grom2_0.grm2_0" crc="cc11b93f" map="0001" />
+            <part name="gt2k_grom2_1.grm2_1" crc="1c3a0126" map="0010" />
+            <part name="gt2k_grom2_2.grm2_2" crc="97814df5" map="0100" />
+            <part name="gt2k_grom2_3.grm2_3" crc="f0f7373f" map="1000" />
+        </interleave>
+        <part repeat="0x1b00000">00</part>
+        <!-- 0x2600000: ES5506 bank 0 (ensoniq.0), slot A. -->
+        <interleave output="16">
+            <part name="gt2k_srom0_nr.srom0" crc="44983bd7" map="01" />
+            <part map="10" repeat="0x100000">00</part>
+        </interleave>
+        <interleave output="16">
+            <part name="gt2k_srom1_nr.srom1" crc="1b3f18b6" map="01" />
+            <part map="10" repeat="0x80000">00</part>
+        </interleave>
+        <part repeat="0x100000">00</part>
+        <!-- 0x2a00000: slot B, unused. -->
+        <part repeat="0x400000">00</part>
+    </rom>
+</misterromdescription>
